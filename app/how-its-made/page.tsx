@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ScrollAnimationWrapper } from "@/components/scroll-animations"
-import ProductShowcaseHero from "@/components/product-showcase-hero"
+import HowItsMadeHero from "@/components/how-its-made-hero"
 import { ArrowRight, Leaf, Droplets, Heart, Award, Zap, BarChart3 } from "lucide-react"
 import { Metadata } from "next"
 
@@ -107,8 +107,8 @@ export default function HowItsMade() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Premium Product Showcase Hero */}
-      <ProductShowcaseHero />
+      {/* Premium Video Hero */}
+      <HowItsMadeHero />
 
       {/* Production Steps */}
       <section className="py-20 bg-white">
@@ -177,13 +177,14 @@ export default function HowItsMade() {
             <ScrollAnimationWrapper
               animationType="parallax"
               parallaxIntensity={0.4}
-              className="relative h-96 rounded-lg overflow-hidden shadow-lg"
+              className="relative h-96 rounded-lg overflow-hidden shadow-2xl"
             >
               <Image
-                src="/images/peanut-farm-wide.jpg"
+                src="/images/peanut-farm-wide-premium.jpg"
                 alt="Peanut Farm Cultivation"
                 fill
                 className="object-cover"
+                priority
               />
             </ScrollAnimationWrapper>
 
@@ -330,13 +331,14 @@ export default function HowItsMade() {
             <ScrollAnimationWrapper
               animationType="parallax"
               parallaxIntensity={0.5}
-              className="relative h-96 rounded-lg overflow-hidden shadow-lg"
+              className="relative h-96 rounded-lg overflow-hidden shadow-2xl"
             >
               <Image
-                src="/images/ingredients-display.jpg"
+                src="/images/ingredients-display-premium.jpg"
                 alt="Peanut Butter Ingredients"
                 fill
                 className="object-cover"
+                priority
               />
             </ScrollAnimationWrapper>
           </div>
