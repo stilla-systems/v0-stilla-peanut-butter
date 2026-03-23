@@ -10,7 +10,6 @@ import DynamicPromoCountdown from "@/components/dynamic-promo-countdown"
 import { getCurrentFestivityName } from "@/utils/festivity-dates"
 import LaunchAnnouncementBanner from "@/components/launch-announcement-banner"
 import { ScrollAnimationWrapper } from "@/components/scroll-animations"
-import HomeVideoHero from "@/components/home-video-hero"
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false)
@@ -41,8 +40,67 @@ export default function Home() {
       {/* Launch Announcement Banner */}
       <LaunchAnnouncementBanner />
 
-      {/* Premium Video Hero Section */}
-      <HomeVideoHero />
+      {/* Hero Section with Parallax */}
+      <section className="relative py-12 md:py-16 lg:py-24 bg-amber-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-16">
+            <ScrollAnimationWrapper animationType="fadeInLeft" duration={0.8} className="w-full md:w-1/2 space-y-4 md:space-y-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 leading-tight">
+                100% Natural Peanut Butter, Made Just For You
+              </h1>
+              <p className="mt-3 md:mt-4 text-base md:text-lg text-amber-800">
+                Stilla Peanut Butter is made from only the finest peanuts. No additives, no preservatives - just pure,
+                delicious peanut goodness.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6 md:mt-8">
+                <Button
+                  size="lg"
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold text-base md:text-lg group"
+                  asChild
+                >
+                  <Link href="/checkout/stillapay-checkout">
+                    Buy Now
+                    <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-amber-900 text-amber-900 hover:bg-amber-900/10 font-medium text-base md:text-lg bg-transparent"
+                  asChild
+                >
+                  <Link href="/promotions">Special Promotion</Link>
+                </Button>
+              </div>
+            </ScrollAnimationWrapper>
+
+            <ScrollAnimationWrapper 
+              animationType="parallax" 
+              parallaxIntensity={0.3}
+              className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0"
+            >
+              <motion.div
+                className="relative w-[220px] sm:w-[280px] md:w-[320px] lg:w-[400px]"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05, rotate: isHovered ? 5 : 0 }}
+                onHoverStart={() => setIsHovered(true)}
+                onHoverEnd={() => setIsHovered(false)}
+              >
+                <Image
+                  src="/images/stilla-peanut-butter.png"
+                  alt="Stilla Peanut Butter Jar"
+                  width={400}
+                  height={600}
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            </ScrollAnimationWrapper>
+          </div>
+        </div>
+      </section>
 
       {/* Rest of the homepage content remains unchanged */}
       {/* Festivity Promo Banner */}
