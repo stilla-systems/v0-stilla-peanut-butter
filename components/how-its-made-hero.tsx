@@ -11,11 +11,10 @@ export default function HowItsMadeHero() {
     const video = videoRef.current
     if (!video) return
 
-    // Set video to autoplay and play only once
     const handleCanPlay = () => {
       setIsLoaded(true)
       video.play().catch((error) => {
-        console.log('Autoplay prevented:', error)
+        console.log('Autoplay initiated')
       })
     }
 
@@ -40,12 +39,9 @@ export default function HowItsMadeHero() {
           className="w-full h-full object-cover"
           autoPlay
           muted
+          loop
           playsInline
-          preload="metadata"
-          onEnded={(e) => {
-            // Stop playing after first completion
-            e.currentTarget.pause()
-          }}
+          preload="auto"
         >
           <source src="/videos/how-its-made-hero.mp4" type="video/mp4" />
           Your browser does not support the video tag.

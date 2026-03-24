@@ -1,14 +1,11 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react'
 import { ScrollAnimationWrapper } from '@/components/scroll-animations'
 
 export default function HomepageVideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -16,36 +13,12 @@ export default function HomepageVideoSection() {
     if (!video) return
 
     const handleLoadedData = () => setIsLoading(false)
-    const handlePlay = () => setIsPlaying(true)
-    const handlePause = () => setIsPlaying(false)
-
     video.addEventListener('loadeddata', handleLoadedData)
-    video.addEventListener('play', handlePlay)
-    video.addEventListener('pause', handlePause)
 
     return () => {
       video.removeEventListener('loadeddata', handleLoadedData)
-      video.removeEventListener('play', handlePlay)
-      video.removeEventListener('pause', handlePause)
     }
   }, [])
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause()
-      } else {
-        videoRef.current.play()
-      }
-    }
-  }
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-    }
-  }
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-white to-amber-50 overflow-hidden">
@@ -66,16 +39,18 @@ export default function HomepageVideoSection() {
         <ScrollAnimationWrapper
           animationType="scaleUp"
           duration={0.8}
-          className="relative max-w-4xl mx-auto"
+          className="relative w-full"
         >
           <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl">
-            {/* Video Container */}
+            {/* Video Container - Full Width Responsive with Aspect Ratio */}
             <div className="relative w-full bg-black aspect-video">
               <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
-                preload="metadata"
-                muted={isMuted}
+                preload="auto"
+                autoPlay
+                muted
+                loop
                 playsInline
               >
                 <source src="/videos/homepage-showcase.mp4" type="video/mp4" />
@@ -84,43 +59,15 @@ export default function HomepageVideoSection() {
 
               {/* Loading Spinner */}
               {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin" />
-                </div>
-              )}
-
-              {/* Play/Pause Overlay */}
-              <motion.button
-                onClick={togglePlay}
-                className="absolute inset-0 w-full h-full flex items-center justify-center group cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-              >
                 <motion.div
-                  className="bg-white/20 backdrop-blur-sm p-4 rounded-full group-hover:bg-white/30 transition-all"
-                  whileHover={{ scale: 1.1 }}
+                  className="absolute inset-0 flex items-center justify-center bg-black/40"
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {isPlaying ? (
-                    <Pause className="w-12 h-12 text-white fill-white" />
-                  ) : (
-                    <Play className="w-12 h-12 text-white fill-white ml-1" />
-                  )}
+                  <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin" />
                 </motion.div>
-              </motion.button>
-
-              {/* Controls */}
-              <div className="absolute bottom-4 right-4 flex items-center gap-2 z-10">
-                <motion.button
-                  onClick={toggleMute}
-                  className="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-all"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  {isMuted ? (
-                    <VolumeX className="w-5 h-5 text-white" />
-                  ) : (
-                    <Volume2 className="w-5 h-5 text-white" />
-                  )}
-                </motion.button>
-              </div>
+              )}
             </div>
 
             {/* Bottom Accent */}
