@@ -1,9 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// This would normally be stored in an environment variable
-const PAYSTACK_SECRET_KEY = "sk_live_d7e7ae498908028735161403df5db3229be989ca"
+// Stilla Peanut Butter Paystack credentials
+const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY || "sk_live_de079929f968f874b8581f395ec1f502ba649108"
+const PAYSTACK_PUBLIC_KEY = process.env.PAYSTACK_PUBLIC_KEY || "pk_live_c52e5b65e8b04588b855646aeec65a407c9624da"
 const PAYSTACK_API_URL = "https://api.paystack.co/transaction/initialize"
-const CALLBACK_URL = "https://stillapeanutbutter.com/paystack/callback/v0"
+const CALLBACK_URL = process.env.CALLBACK_URL || "https://stillapeanutbutter.com/api/webhook"
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,8 +32,17 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify({
         email,
-        amount, // Amount should be in the smallest currency unit (kobo/pesewas)
+        amount, // Amount should be in the smallest currency unit (pesewas)
         callback_url: CALLBACK_URL,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: 'Product',
+              variable_name: 'product',
+              value: 'Stilla Peanut Butter',
+            },
+          ],
+        },
       }),
     })
 
