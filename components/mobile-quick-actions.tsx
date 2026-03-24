@@ -96,13 +96,13 @@ export default function MobileQuickActions() {
               <ChevronUp size={24} />
             </motion.button>
 
-            <Link href="/checkout/stillapay-checkout">
+            <Link href="/shop">
               <motion.button
                 className="bg-red-600 text-white rounded-full p-3 shadow-lg flex items-center justify-center touch-manipulation"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 style={{ minHeight: "48px", minWidth: "48px" }}
-                aria-label="Checkout"
+                aria-label="Shop"
               >
                 <ShoppingBag size={24} />
               </motion.button>

@@ -7,10 +7,13 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Clock, Users, Search, Filter } from "lucide-react"
+import RecipeModal from "@/components/recipe-modal"
 
 export default function RecipesPage() {
   const [filter, setFilter] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
+  const [selectedRecipe, setSelectedRecipe] = useState<any>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const recipes = [
     {
@@ -175,8 +178,14 @@ export default function RecipesPage() {
                         <span>Serves {recipe.servings}</span>
                       </div>
                     </div>
-                    <Button className="w-full bg-amber-900 hover:bg-amber-800 text-white" asChild>
-                      <Link href={`/recipes/${recipe.id}`}>View Recipe</Link>
+                    <Button 
+                      className="w-full bg-amber-900 hover:bg-amber-800 text-white"
+                      onClick={() => {
+                        setSelectedRecipe(recipe)
+                        setIsModalOpen(true)
+                      }}
+                    >
+                      View Recipe
                     </Button>
                   </div>
                 </motion.div>
@@ -200,6 +209,13 @@ export default function RecipesPage() {
           </div>
         </div>
       </section>
+
+      {/* Recipe Modal */}
+      <RecipeModal 
+        recipe={selectedRecipe} 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+      />
     </main>
   )
 }

@@ -278,7 +278,7 @@ export default function ProductShowcaseHero() {
                     See the Process
                   </a>
                   <a
-                    href="/checkout/stillapay-checkout"
+                    href="/shop"
                     className="px-6 md:px-8 py-2.5 md:py-3 bg-white text-amber-900 font-semibold rounded-xl border-2 border-amber-200 hover:bg-amber-50 transition-all duration-300"
                   >
                     Shop Now

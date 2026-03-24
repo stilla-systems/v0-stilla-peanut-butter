@@ -258,7 +258,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-amber-900 hover:bg-gray-100 font-bold" asChild>
-                <Link href="/checkout/stillapay-checkout">Buy Now</Link>
+                <Link href="/shop">Buy Now</Link>
               </Button>
               <Button
                 variant="outline"
