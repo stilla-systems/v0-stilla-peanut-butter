@@ -28,8 +28,8 @@ export default function ShopPage() {
   }, [])
 
   const handleBuyNow = () => {
-    // Redirect to Paystack checkout
-    window.location.href = "https://paystack.com/buy/stilla-peanut-butter-buy-now"
+    // Redirect to Stillapay with Paystack integration
+    window.location.href = "https://paystack.shop/pay/8sim7vb1jf"
   }
 
   const incrementQuantity = () => {
@@ -278,7 +278,7 @@ export default function ShopPage() {
                       </div>
 
                       <div className="mt-6 text-center text-sm text-gray-500">
-                        Secure payment powered by Paystack. Free shipping on orders over GHC 150.
+                        Secure payment powered by Stilla Pay + Paystack. Free shipping on orders over GHC 150.
                       </div>
                     </div>
 
