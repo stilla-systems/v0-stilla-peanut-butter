@@ -10,6 +10,7 @@ import DynamicPromoCountdown from "@/components/dynamic-promo-countdown"
 import { getCurrentFestivityName } from "@/utils/festivity-dates"
 import LaunchAnnouncementBanner from "@/components/launch-announcement-banner"
 import { ScrollAnimationWrapper } from "@/components/scroll-animations"
+import HomepageVideoSection from "@/components/homepage-video-section"
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false)
@@ -168,6 +169,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Video Section */}
+      <HomepageVideoSection />
 
       {/* Product Showcase with Parallax */}
       <section className="py-16 bg-amber-50">
