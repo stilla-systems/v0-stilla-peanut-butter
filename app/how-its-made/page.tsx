@@ -15,7 +15,7 @@ export default function HowItsMade() {
   const productionSteps = [
     {
       title: 'Sourcing & Harvesting',
-      description: 'We partner with local farmers across Ghana's fertile regions to source the finest peanuts.',
+      description: 'We partner with local farmers across Ghana\'s fertile regions to source the finest peanuts.',
       details: [
         'Sustainable farming practices',
         'Handpicked selection process',
