@@ -35,6 +35,7 @@ import AnimatedButton from "@/components/animated-button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PaystackCheckoutEmbed from "@/components/paystack-checkout-embed"
+import StillaPayIntegration from "@/components/stilla-pay-integration"
 
 export default function CheckoutPage() {
   const [quantity, setQuantity] = useState(1)
@@ -179,8 +180,8 @@ export default function CheckoutPage() {
   const handlePayNow = () => {
     setIsProcessing(true)
 
-    // Direct to Paystack payment page
-    window.open("https://paystack.com/buy/stilla-peanut-butter-buy-now", "_blank")
+    // Direct to Stilla Pay integration with Paystack
+    window.open("https://paystack.shop/pay/8sim7vb1jf", "_blank")
 
     // Simulate successful payment after a delay
     setTimeout(() => {
@@ -195,6 +196,7 @@ export default function CheckoutPage() {
             particleCount: 100,
             spread: 70,
             origin: { y: 0.6 },
+            colors: ["#FFD700", "#FF0000", "#FFA500", "#32CD32"],
           })
         })
       }

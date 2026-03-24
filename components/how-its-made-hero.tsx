@@ -36,7 +36,7 @@ export default function HowItsMadeHero() {
       >
         <video
           ref={videoRef}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover filter brightness-110 contrast-125"
           autoPlay
           muted
           loop

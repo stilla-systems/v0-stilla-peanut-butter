@@ -19,6 +19,9 @@ export default function PaystackPaymentForm({ amount, onSuccess, onError }: Pays
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  // Paystack credentials for Stilla Peanut Butter
+  const PAYSTACK_PUBLIC_KEY = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_live_c52e5b65e8b04588b855646aeec65a407c9624da"
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -36,6 +39,7 @@ export default function PaystackPaymentForm({ amount, onSuccess, onError }: Pays
         body: JSON.stringify({
           email,
           amount: amountInPesewas,
+          reference: `ref_stilla_${Date.now()}`,
         }),
       })
 
