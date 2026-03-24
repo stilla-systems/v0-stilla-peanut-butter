@@ -87,7 +87,7 @@ export default function Header() {
               How it's Made
             </Link>
             <Button className="bg-red-600 hover:bg-red-700 text-white" asChild>
-              <Link href="/checkout/stillapay-checkout">
+              <Link href="/shop">
                 <ShoppingBag className="h-4 w-4 mr-2" />
                 Buy Now
               </Link>
@@ -146,7 +146,7 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   asChild
                 >
-                  <Link href="/checkout/stillapay-checkout">
+                  <Link href="/shop">
                     <ShoppingBag className="h-5 w-5 mr-2" />
                     Buy Now
                   </Link>

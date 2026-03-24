@@ -154,7 +154,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/checkout/stillapay-checkout"
+                  href="/shop"
                   className="text-amber-100 hover:text-red-400 transition-colors block py-0.5"
                 >
                   Shop Now
