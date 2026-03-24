@@ -5,7 +5,6 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-import WhatsAppWidget from "@/components/whatsapp-widget"
 import ManualPaymentWidget from "@/components/manual-payment-widget"
 import GoogleAnalytics from "@/components/google-analytics"
 import { JsonLd } from "@/components/json-ld"
@@ -125,7 +124,6 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <WhatsAppWidget />
           <ManualPaymentWidget />
           <PromotionalSeal />
           <MobileQuickActions />
